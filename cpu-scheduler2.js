@@ -498,6 +498,7 @@ $(document).ready(function () {
 	});
 	//when you input a value into the table
 	$('td input').on('input propertychange paste', function () {
+		processCount = Number($("#proccess_num").val());
 		run();
 	});
 	$('#SIMULAR').click(function () {
