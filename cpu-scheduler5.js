@@ -13,6 +13,7 @@ $(document).ready(function () {
 	//the amount of processes, this is used to load in values into processArray
 	var processCount = 3;
 	var processCount2 = 3;
+	var timeQuantum = 2;
 	//used to keep track of the position
 	var position = 0;
 	//things are put into here to display
