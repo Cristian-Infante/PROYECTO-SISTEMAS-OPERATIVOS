@@ -155,7 +155,7 @@ $(document).ready(function () {
 			waitTimes[0] = processArray[0].finishTime - processArray[0].arrivalTime - processArray[0].initialBurst;
 			waitTimes[0] = parseFloat(waitTimes[0].toPrecision(12));
 			var fullExplanation = '';
-			fullExplanation = '<p class="lead">Tiempo promedio de espera: ';
+			fullExplanation = 'Tiempo promedio de espera: ';
 			var waitSum = waitTimes[0];
 			for (var i = 1; i < processArray.length; i++) {
 				waitTimes[i] = processArray[i].finishTime - processArray[i].arrivalTime - processArray[i].initialBurst;
@@ -164,11 +164,12 @@ $(document).ready(function () {
 			}
 			var averageWait = waitSum / processArray.length;
 			averageWait = Math.round(averageWait * 10000) / 10000;
-			fullExplanation += averageWait + ' ms';
 
 			sjf = fullExplanation;
 			console.log("-FCFS: " + sjf + " " + algorithm);
-			$("#explanation-equation2").html(fullExplanation);
+			document.getElementById('explanation-equation2').innerHTML = fullExplanation;
+			document.getElementById('explanation-equation2.1').innerHTML = averageWait;
+			document.getElementById('explanation-equation2.2').innerHTML = ' ms';
 
 			//set the equation text
 			//updates equation
@@ -471,15 +472,6 @@ $(document).ready(function () {
 	});
 	$('#add_quantum').click(function () {
 		timeQuantum = Number($(this).val());
-		run();
-	});
-	// when you enter a quantum time, used for Round Robin
-	$('#enter_quantum').on('input propertychange paste', function () {
-
-		if (isNaN($(this).val()) == false && $(this).val() != 0) {
-			timeQuantum = Number($(this).val());
-		}
-
 		run();
 	});
 	//when you input a value into the table

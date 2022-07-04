@@ -17,21 +17,22 @@
 
 <body>
 
-    <div class="container">
-      <div class="well">
-        <div class="col-md-5">
-          <a class="link" href="index.html">HOME</a>
-        </div>
+  <div class="container">
+    <div class="well">
+      <div class="col-md-5">
+        <a class="link" href="index.html">HOME</a>
       </div>
     </div>
+  </div>
 
-    <div class="container">
-      <div class="well">
-        <div class="col-md-6">
-          <span>Dar clic en "SIMULAR" para usar el modo automatizado o escribir los datos deseados en la tabla, máximo se pueden 10 procesos.</span>
-        </div>
+  <div class="container">
+    <div class="well">
+      <div class="col-md-6">
+        <span>Dar clic en "SIMULAR" para usar el modo automatizado o escribir los datos deseados en la tabla, máximo se
+          pueden 10 procesos.</span>
       </div>
     </div>
+  </div>
 
   <div class="container">
 
@@ -41,11 +42,15 @@
 
         <div class="col-md-4">
 
-
           <div class="btn-group algorithm_dropdown" style="margin-left:5px;">
             <button id="SIMULAR" type="button" class="btn btn-info dropdown-toggle">
               <span>SIMULAR</span>
-          </button>
+            </button>
+          </div>
+          <div class="btn-group algorithm_dropdown" style="margin-left:5px;">
+            <button id="RESET" type="button" class="btn btn-info dropdown-toggle">
+              <span>RESETEAR TABLA</span>
+            </button>
           </div>
 
         </div><!-- /column -->
@@ -81,8 +86,8 @@
                   <span class="glyphicon glyphicon-minus"></span>
                 </button>
               </span>
-              <input id="enter_quantum" disabled="disabled" type="number" name="quant[1]" class="form-control input-number" value="2"
-                style="background-color:white" maxlength="2">
+              <input id="enter_quantum" disabled="disabled" type="number" name="quant[1]"
+                class="form-control input-number" value="2" style="background-color:white" maxlength="2">
               <span class="input-group-btn">
                 <button id="add_quantum" type="button" class="btn btn-default btn-number" data-type="plus"
                   data-field="quant[1]">
@@ -114,66 +119,88 @@
       <tbody id="processTable">
         <tr id="row_1" class="collapse in">
           <th> P1</th>
-          <td><input id="arrive_1" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td><input type="number" id="burst_1" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td class="priority collapse"><input id="priority_1" type="number" class="form-control" placeholder="0" /></td>
+          <td><input id="arrive_1" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input type="number" id="burst_1" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_1" type="number" class="form-control" placeholder="0" />
+          </td>
         </tr>
         <tr id="row_2" class="collapse in">
           <th> P2 </th>
-          <td><input id="arrive_2" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td><input type="number" id="burst_2" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td class="priority collapse"><input id="priority_2" type="number" class="form-control" placeholder="0" /></td>
+          <td><input id="arrive_2" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input type="number" id="burst_2" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_2" type="number" class="form-control" placeholder="0" />
+          </td>
         </tr>
         <tr id="row_3" class="collapse in">
           <th> P3 </th>
-          <td><input id="arrive_3" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td><input id="burst_3" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td class="priority collapse"><input id="priority_3" type="number" class="form-control" placeholder="0" /></td>
+          <td><input id="arrive_3" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_3" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_3" type="number" class="form-control" placeholder="0" />
+          </td>
         </tr>
         <tr id="row_4" class="collapse ">
           <th> P4 </th>
-          <td><input id="arrive_4" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td><input id="burst_4" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td class="priority collapse"><input id="priority_4" type="number" class="form-control" placeholder="0" /></td>
+          <td><input id="arrive_4" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_4" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_4" type="number" class="form-control" placeholder="0" />
+          </td>
         </tr>
         <tr id="row_5" class="collapse">
           <th> P5 </th>
-          <td><input id="arrive_5" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td><input id="burst_5" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td class="priority collapse"><input id="priority_5" type="number" class="form-control" placeholder="0" /></td>
+          <td><input id="arrive_5" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_5" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_5" type="number" class="form-control" placeholder="0" />
+          </td>
         </tr>
         <tr id="row_6" class="collapse">
           <th> P6 </th>
-          <td><input id="arrive_6" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td><input id="burst_6" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td class="priority collapse"><input id="priority_6" type="number" class="form-control" placeholder="0" /></td>
+          <td><input id="arrive_6" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_6" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_6" type="number" class="form-control" placeholder="0" />
+          </td>
         </tr>
         <tr id="row_7" class="collapse">
           <th> P7 </th>
-          <td><input id="arrive_7" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td><input id="burst_7" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td class="priority collapse"><input id="priority_7" type="number" class="form-control" placeholder="0" /></td>
+          <td><input id="arrive_7" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_7" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_7" type="number" class="form-control" placeholder="0" />
+          </td>
         </tr>
         <tr id="row_8" class="collapse">
           <th> P8 </th>
-          <td><input id="arrive_8" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td><input id="burst_8" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td class="priority collapse"><input id="priority_8" type="number" class="form-control" placeholder="0" /></td>
+          <td><input id="arrive_8" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_8" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_8" type="number" class="form-control" placeholder="0" />
+          </td>
         </tr>
         <tr id="row_9" class="collapse">
           <th> P9 </th>
-          <td><input id="arrive_9" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td><input id="burst_9" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td class="priority collapse"><input id="priority_9" type="number" class="form-control" placeholder="0" /></td>
+          <td><input id="arrive_9" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_9" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_9" type="number" class="form-control" placeholder="0" />
+          </td>
         </tr>
         <tr id="row_10" class="collapse">
           <th> P10 </th>
-          <td><input id="arrive_10" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td><input id="burst_10" type="number" class="form-control" placeholder="0" maxlength="2"/></td>
-          <td class="priority collapse"><input id="priority_10" type="number" class="form-control" placeholder="0" /></td>
+          <td><input id="arrive_10" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_10" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_10" type="number" class="form-control" placeholder="0" />
+          </td>
         </tr>
       </tbody>
     </table>
+
+    <div class="well">
+      <div class="col-md-5">
+        <table>
+          <tbody>
+            <tr>
+              <td id="optimo"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
     <div class="class well">
       <div class="col-md-5">
@@ -181,8 +208,15 @@
       </div>
       <div class="col-md-5">
         <div>
-          <div id="explanation-equation1">
-          </div>
+          <table>
+            <tbody>
+              <tr>
+                <td id="explanation-equation1"></td>
+                <td id="explanation-equation1.1"></td>
+                <td id="explanation-equation1.2"></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div><!-- /column -->
     </div>
@@ -195,8 +229,15 @@
       </div>
       <div class="col-md-5">
         <div>
-          <div id="explanation-equation2">
-          </div>
+          <table>
+            <tbody>
+              <tr>
+                <td id="explanation-equation2"> </td>
+                <td id="explanation-equation2.1">10</td>
+                <td id="explanation-equation2.2"></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div><!-- /column -->
     </div>
@@ -209,8 +250,15 @@
       </div>
       <div class="col-md-5">
         <div>
-          <div id="explanation-equation3">
-          </div>
+          <table>
+            <tbody>
+              <tr>
+                <td id="explanation-equation3"></td>
+                <td id="explanation-equation3.1"></td>
+                <td id="explanation-equation3.2"></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div><!-- /column -->
     </div>
@@ -223,8 +271,15 @@
       </div>
       <div class="col-md-5">
         <div>
-          <div id="explanation-equation4">
-          </div>
+          <table>
+            <tbody>
+              <tr>
+                <td id="explanation-equation4"></td>
+                <td id="explanation-equation4.1"></td>
+                <td id="explanation-equation4.2"></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div><!-- /column -->
     </div>

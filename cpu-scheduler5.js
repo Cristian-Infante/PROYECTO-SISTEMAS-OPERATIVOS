@@ -60,7 +60,6 @@ $(document).ready(function () {
 		}
 		return smallestIndex;
 	}
-
 	function findSmallestPriorityIndex() {
 		var smallestIndex = 0;
 		var smallestPriority = 0;
@@ -154,7 +153,7 @@ $(document).ready(function () {
 			waitTimes[0] = processArray[0].finishTime - processArray[0].arrivalTime - processArray[0].initialBurst;
 			waitTimes[0] = parseFloat(waitTimes[0].toPrecision(12));
 			var fullExplanation = '';
-			fullExplanation = '<p class="lead">Tiempo promedio de espera: ';
+			fullExplanation = 'Tiempo promedio de espera: ';
 			var waitSum = waitTimes[0];
 			for (var i = 1; i < processArray.length; i++) {
 				waitTimes[i] = processArray[i].finishTime - processArray[i].arrivalTime - processArray[i].initialBurst;
@@ -163,18 +162,18 @@ $(document).ready(function () {
 			}
 			var averageWait = waitSum / processArray.length;
 			averageWait = Math.round(averageWait * 10000) / 10000;
-			fullExplanation += averageWait + ' ms';
 
 			sjf = fullExplanation;
 			console.log("-FCFS: " + sjf + " " + algorithm);
-			$("#explanation-equation4").html(fullExplanation);
+			document.getElementById('explanation-equation4').innerHTML = fullExplanation;
+			document.getElementById('explanation-equation4.1').innerHTML = averageWait;
+			document.getElementById('explanation-equation4.2').innerHTML = ' ms';
 
 			//set the equation text
 			//updates equation
 			Preview.Update();
 		}
 	}
-
 	function process(processName, burstTime, arrivalTime, pIndex, newPriority) {
 		this.processName = processName;
 		this.burstTime = burstTime;
@@ -235,7 +234,6 @@ $(document).ready(function () {
 			}
 		}
 	}
-
 	function addToBar(processName, percent, start, duration, index) {
 		//find the end time of the process
 		var end = start + duration;
@@ -372,6 +370,63 @@ $(document).ready(function () {
 	}
 
 
+	function optimo(){
+		var Optimo = [];
+		var Optimo2 = ["FCFS", "SFJ", "Prioridad", "Round Robin"];
+		Optimo[0] = Number(document.getElementById('explanation-equation1.1').innerHTML);
+		Optimo[0] = parseFloat(Optimo[0].toPrecision(4));
+		Optimo[1] = Number(document.getElementById('explanation-equation2.1').innerHTML);
+		Optimo[1] = parseFloat(Optimo[1].toPrecision(4));
+		Optimo[2] = Number(document.getElementById('explanation-equation3.1').innerHTML);
+		Optimo[2] = parseFloat(Optimo[2].toPrecision(4));
+		Optimo[3] = Number(document.getElementById('explanation-equation4.1').innerHTML);
+		Optimo[3] = parseFloat(Optimo[3].toPrecision(4));
+
+		console.log("fcfs: " + Optimo[0]);
+		console.log("sjf: " + Optimo[1]);
+		console.log("pr: " + Optimo[2]);
+		console.log("rr: " + Optimo[3]);
+			
+		let dataLen = Optimo.length;
+		//console.log("dataLen",dataLen);
+		for(let i=0; i < dataLen; i++){
+			for(let j=0; j < dataLen; j++){
+				if(j+1 !== dataLen){
+				if(Optimo[j] > Optimo[j+1]){
+					let swapElement = Optimo[j+1];
+					Optimo[j+1] = Optimo[j];
+					Optimo[j] = swapElement;
+
+					let swapElement2 = Optimo2[j+1];
+					Optimo2[j+1] = Optimo2[j];
+					Optimo2[j] = swapElement2;
+				}
+				}  
+			}
+		}
+		console.log(Optimo);
+		console.log(Optimo2);
+		if(Optimo[0] == Optimo[1] && Optimo[1] == Optimo[2] && Optimo[2] == Optimo[3]){
+			console.log("Todos los algoritmos tienen la misma efectividad");
+			document.getElementById('optimo').innerHTML = 'Todos los algoritmos tienen la misma efectividad';
+		}
+		else{
+			if(Optimo[0] == Optimo[1] && Optimo[1] == Optimo[2]){
+				console.log("Excepto " + Optimo2[3] + " todos los algoritmos tienen la misma efectividad");
+				document.getElementById('optimo').innerHTML = 'Excepto ' + Optimo2[3] + ' todos los algoritmos tienen la misma efectividad';
+			}
+			else{
+				if(Optimo[0] == Optimo[1]){
+					console.log("Los mejores algoritmos son: " + Optimo2[0] + " y " + Optimo2[1]);
+					document.getElementById('optimo').innerHTML = 'Los mejores algoritmos son: ' + Optimo2[0] + ' y ' + Optimo2[1];
+				}
+				else{
+					console.log("El mejor algoritmo es:" + Optimo2[0]);
+					document.getElementById('optimo').innerHTML = 'El mejor algoritmo es: ' + Optimo2[0];
+				}
+			}
+		}
+	}
 	function run() {
 		loadValues();
 		if (processArray.length > 0) {
@@ -401,6 +456,7 @@ $(document).ready(function () {
 			priority();
 			bar.displayBar();
 			console.log(algorithm);*/
+			optimo();
 		}
 	}
 	//creates the tick marks under the gant chart
@@ -465,11 +521,11 @@ $(document).ready(function () {
 	});
 	$('#subtract_quantum').click(function () {
 		$('#add_quantum').prop("disabled", false);
-		if (timeQuantum > 2) {
+		if (timeQuantum > 1) {
 			timeQuantum -= 1;
 			timeQuantum = parseFloat(timeQuantum.toPrecision(12));
 		}
-		if (timeQuantum == 2) {
+		if (timeQuantum == 1) {
 			$('#subtract_quantum').prop("disabled", true);
 		}
 
@@ -478,11 +534,11 @@ $(document).ready(function () {
 	});
 	$('#add_quantum').click(function () {
 		$('#subtract_quantum').prop("disabled", false);
-		if (timeQuantum < 5) {
+		if (timeQuantum < 10) {
 			timeQuantum += 1;
 			timeQuantum = parseFloat(timeQuantum.toPrecision(12));
 		}
-		if (timeQuantum == 5) {
+		if (timeQuantum == 10) {
 			$('#add_quantum').prop("disabled", true);
 		}
 
