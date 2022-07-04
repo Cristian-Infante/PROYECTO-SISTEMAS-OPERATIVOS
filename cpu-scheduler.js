@@ -27,7 +27,6 @@ $(document).ready(function () {
 	}, 200);
 
 
-
 	//used for debugging
 	function printArray() {
 		console.log("Printing array");
@@ -58,7 +57,6 @@ $(document).ready(function () {
 		}
 		return smallestIndex;
 	}
-
 	function findSmallestPriorityIndex() {
 		var smallestIndex = 0;
 		var smallestPriority = 0;
@@ -169,7 +167,6 @@ $(document).ready(function () {
 			Preview.Update();
 		}
 	}
-
 	function process(processName, burstTime, arrivalTime, pIndex, newPriority) {
 		this.processName = processName;
 		this.burstTime = burstTime;
@@ -230,7 +227,6 @@ $(document).ready(function () {
 			}
 		}
 	}
-
 	function addToBar(processName, percent, start, duration, index) {
 		//find the end time of the process
 		var end = start + duration;
@@ -265,6 +261,7 @@ $(document).ready(function () {
 	}
 
 
+
 	function FCFS() {
 		sortArriveTimes();
 		for (var i = 0; i < processArray.length; i++) {
@@ -273,7 +270,6 @@ $(document).ready(function () {
 			processArray[i].finished();
 		}
 	}
-
 	function SJF() {
 		sortArriveTimes();
 		while (isDone() == false) {
@@ -283,7 +279,6 @@ $(document).ready(function () {
 			processArray[i].finished();
 		}
 	}
-
 	function priority() {
 		function findNextJump(proccessIndex) {
 			var interruptFound = false;
@@ -314,7 +309,6 @@ $(document).ready(function () {
 			findNextJump(i);
 		}
 	}
-
 	function roundRobin() {
 		function findNextJump(index) {
 			while (true) {
@@ -343,6 +337,7 @@ $(document).ready(function () {
 		}
 	}
 
+	
 
 	function run() {
 		loadValues();

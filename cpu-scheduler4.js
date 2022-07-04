@@ -457,6 +457,22 @@ $(document).ready(function () {
 		$(".zero").css("padding-right", "0.5px");
 
 	}
+	$('#add_row').click(function () {
+		processCount = Number($("#proccess_num").val());
+		run();
+	});
+	$('#remove_row').click(function () {
+		processCount = Number($("#proccess_num").val());
+		run();
+	});
+	$('#subtract_quantum').click(function () {
+		timeQuantum = Number($(this).val());
+		run();
+	});
+	$('#add_quantum').click(function () {
+		timeQuantum = Number($(this).val());
+		run();
+	});
 	//when you input a value into the table
 	$('td input').on('input propertychange paste', function () {
 		processCount = Number($("#proccess_num").val());

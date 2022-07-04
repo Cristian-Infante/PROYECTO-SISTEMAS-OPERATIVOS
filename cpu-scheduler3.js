@@ -457,6 +457,31 @@ $(document).ready(function () {
 		$(".zero").css("padding-right", "0.5px");
 
 	}
+	$('#add_row').click(function () {
+		processCount = Number($("#proccess_num").val());
+		run();
+	});
+	$('#remove_row').click(function () {
+		processCount = Number($("#proccess_num").val());
+		run();
+	});
+	$('#subtract_quantum').click(function () {
+		timeQuantum = Number($(this).val());
+		run();
+	});
+	$('#add_quantum').click(function () {
+		timeQuantum = Number($(this).val());
+		run();
+	});
+	// when you enter a quantum time, used for Round Robin
+	$('#enter_quantum').on('input propertychange paste', function () {
+
+		if (isNaN($(this).val()) == false && $(this).val() != 0) {
+			timeQuantum = Number($(this).val());
+		}
+
+		run();
+	});
 	//when you input a value into the table
 	$('td input').on('input propertychange paste', function () {
 		processCount = Number($("#proccess_num").val());
