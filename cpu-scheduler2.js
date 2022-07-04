@@ -460,33 +460,6 @@ $(document).ready(function () {
 		run();
 		$('#proccess_num').val(processCount);
 	});
-	$('#subtract_quantum').click(function () {
-		$('#add_quantum').prop("disabled", false);
-		if (timeQuantum > 2) {
-			timeQuantum -= 1;
-			timeQuantum = parseFloat(timeQuantum.toPrecision(12));
-		}
-		if (timeQuantum == 2) {
-			$('#subtract_quantum').prop("disabled", true);
-		}
-
-		run();
-		$('#enter_quantum').val(timeQuantum);
-	});
-	$('#add_quantum').click(function () {
-		$('#subtract_quantum').prop("disabled", false);
-		if (timeQuantum < 5) {
-			timeQuantum += 1;
-			timeQuantum = parseFloat(timeQuantum.toPrecision(12));
-		}
-		if (timeQuantum == 5) {
-			$('#add_quantum').prop("disabled", true);
-		}
-
-		run();
-		$('#enter_quantum').val(timeQuantum);
-
-	});
 	// when you enter a quantum time, used for Round Robin
 	$('#enter_quantum').on('input propertychange paste', function () {
 

@@ -464,12 +464,31 @@ $(document).ready(function () {
 		run();
 	});
 	$('#subtract_quantum').click(function () {
-		timeQuantum = Number($(this).val());
+		$('#add_quantum').prop("disabled", false);
+		if (timeQuantum > 2) {
+			timeQuantum -= 1;
+			timeQuantum = parseFloat(timeQuantum.toPrecision(12));
+		}
+		if (timeQuantum == 2) {
+			$('#subtract_quantum').prop("disabled", true);
+		}
+
 		run();
+		$('#enter_quantum').val(timeQuantum);
 	});
 	$('#add_quantum').click(function () {
-		timeQuantum = Number($(this).val());
+		$('#subtract_quantum').prop("disabled", false);
+		if (timeQuantum < 5) {
+			timeQuantum += 1;
+			timeQuantum = parseFloat(timeQuantum.toPrecision(12));
+		}
+		if (timeQuantum == 5) {
+			$('#add_quantum').prop("disabled", true);
+		}
+
 		run();
+		$('#enter_quantum').val(timeQuantum);
+
 	});
 	//when you input a value into the table
 	$('td input').on('input propertychange paste', function () {
