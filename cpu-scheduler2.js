@@ -380,7 +380,7 @@ $(document).ready(function () {
 
 	function optimo(){
 		var Optimo = [];
-		var Optimo2 = ["FCFS", "SFJ", "Prioridad", "Round Robin"];
+		var Optimo2 = ["FCFS", "SJF", "Prioridad", "Round Robin"];
 		Optimo[0] = Number(document.getElementById('explanation-equation1_2').innerHTML);
 		Optimo[0] = parseFloat(Optimo[0].toPrecision(4));
 		Optimo[1] = Number(document.getElementById('explanation-equation2_1').innerHTML);
