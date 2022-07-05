@@ -152,22 +152,51 @@ $(document).ready(function () {
 			var waitTimes = [];
 			waitTimes[0] = processArray[0].finishTime - processArray[0].arrivalTime - processArray[0].initialBurst;
 			waitTimes[0] = parseFloat(waitTimes[0].toPrecision(12));
-			var fullExplanation = '';
-			fullExplanation = 'Tiempo promedio de espera: ';
 			var waitSum = waitTimes[0];
+
+			var waitTimes2 = [];
+			waitTimes2[0] = processArray[0].finishTime - processArray[0].arrivalTime;
+			waitTimes2[0] = parseFloat(waitTimes2[0].toPrecision(12));
+			var waitSum2 = waitTimes2[0];
+
+			var waitTimes3 = [];
+			waitTimes3[0] = processArray[0].finishTime - processArray[0].initialBurst;
+			waitTimes3[0] = parseFloat(waitTimes3[0].toPrecision(12));
+			var waitSum3 = waitTimes3[0];
+
+			var fullExplanation = '';
+			fullExplanation = 'TpEspera: ';
+
 			for (var i = 1; i < processArray.length; i++) {
 				waitTimes[i] = processArray[i].finishTime - processArray[i].arrivalTime - processArray[i].initialBurst;
 				waitTimes[i] = parseFloat(waitTimes[i].toPrecision(12));
 				waitSum += waitTimes[i];
+				
+				waitTimes2[i] = processArray[i].finishTime - processArray[i].arrivalTime;
+				waitTimes2[i] = parseFloat(waitTimes2[i].toPrecision(4));
+				waitSum2 += waitTimes2[i];
+				
+				waitTimes3[i] = processArray[i].finishTime - processArray[i].initialBurst;
+				waitTimes3[i] = parseFloat(waitTimes3[i].toPrecision(4));
+				waitSum3 += waitTimes3[i];
 			}
 			var averageWait = waitSum / processArray.length;
 			averageWait = Math.round(averageWait * 10000) / 10000;
+			
+			var averageWait2 = waitSum2 / processArray.length;
+			averageWait2 = Math.round(averageWait2 * 10000) / 10000;
+			
+			var averageWait3 = waitSum3 / processArray.length;
+			averageWait3 = Math.round(averageWait3 * 10000) / 10000;
 
 			sjf = fullExplanation;
 			console.log("-FCFS: " + sjf + " " + algorithm);
-			document.getElementById('explanation-equation4').innerHTML = fullExplanation;
-			document.getElementById('explanation-equation4.1').innerHTML = averageWait;
-			document.getElementById('explanation-equation4.2').innerHTML = ' ms';
+
+			document.getElementById('explanation-equation4').innerHTML = 'TpEspera: ';
+			document.getElementById('explanation-equation4_1').innerHTML = averageWait;
+			document.getElementById('explanation-equation4_2').innerHTML = 'ms';
+			$("#explanation-equation4_3").html('<p><br>TpRetorno: ' + averageWait2 + 'ms');
+			$("#explanation-equation4_4").html('<p><br>TpRespuesta: ' + averageWait3 + 'ms');
 
 			//set the equation text
 			//updates equation
@@ -373,13 +402,13 @@ $(document).ready(function () {
 	function optimo(){
 		var Optimo = [];
 		var Optimo2 = ["FCFS", "SFJ", "Prioridad", "Round Robin"];
-		Optimo[0] = Number(document.getElementById('explanation-equation1.1').innerHTML);
+		Optimo[0] = Number(document.getElementById('explanation-equation1_1').innerHTML);
 		Optimo[0] = parseFloat(Optimo[0].toPrecision(4));
-		Optimo[1] = Number(document.getElementById('explanation-equation2.1').innerHTML);
+		Optimo[1] = Number(document.getElementById('explanation-equation2_1').innerHTML);
 		Optimo[1] = parseFloat(Optimo[1].toPrecision(4));
-		Optimo[2] = Number(document.getElementById('explanation-equation3.1').innerHTML);
+		Optimo[2] = Number(document.getElementById('explanation-equation3_1').innerHTML);
 		Optimo[2] = parseFloat(Optimo[2].toPrecision(4));
-		Optimo[3] = Number(document.getElementById('explanation-equation4.1').innerHTML);
+		Optimo[3] = Number(document.getElementById('explanation-equation4_1').innerHTML);
 		Optimo[3] = parseFloat(Optimo[3].toPrecision(4));
 
 		console.log("fcfs: " + Optimo[0]);

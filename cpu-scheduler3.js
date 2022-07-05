@@ -154,22 +154,51 @@ $(document).ready(function () {
 			var waitTimes = [];
 			waitTimes[0] = processArray[0].finishTime - processArray[0].arrivalTime - processArray[0].initialBurst;
 			waitTimes[0] = parseFloat(waitTimes[0].toPrecision(12));
-			var fullExplanation = '';
-			fullExplanation = 'Tiempo promedio de espera: ';
 			var waitSum = waitTimes[0];
+
+			var waitTimes2 = [];
+			waitTimes2[0] = processArray[0].finishTime - processArray[0].arrivalTime;
+			waitTimes2[0] = parseFloat(waitTimes2[0].toPrecision(12));
+			var waitSum2 = waitTimes2[0];
+
+			var waitTimes3 = [];
+			waitTimes3[0] = processArray[0].finishTime - processArray[0].initialBurst;
+			waitTimes3[0] = parseFloat(waitTimes3[0].toPrecision(12));
+			var waitSum3 = waitTimes3[0];
+
+			var fullExplanation = '';
+			fullExplanation = 'TpEspera: ';
+
 			for (var i = 1; i < processArray.length; i++) {
 				waitTimes[i] = processArray[i].finishTime - processArray[i].arrivalTime - processArray[i].initialBurst;
 				waitTimes[i] = parseFloat(waitTimes[i].toPrecision(12));
 				waitSum += waitTimes[i];
+				
+				waitTimes2[i] = processArray[i].finishTime - processArray[i].arrivalTime;
+				waitTimes2[i] = parseFloat(waitTimes2[i].toPrecision(4));
+				waitSum2 += waitTimes2[i];
+				
+				waitTimes3[i] = processArray[i].finishTime - processArray[i].initialBurst;
+				waitTimes3[i] = parseFloat(waitTimes3[i].toPrecision(4));
+				waitSum3 += waitTimes3[i];
 			}
 			var averageWait = waitSum / processArray.length;
 			averageWait = Math.round(averageWait * 10000) / 10000;
+			
+			var averageWait2 = waitSum2 / processArray.length;
+			averageWait2 = Math.round(averageWait2 * 10000) / 10000;
+			
+			var averageWait3 = waitSum3 / processArray.length;
+			averageWait3 = Math.round(averageWait3 * 10000) / 10000;
 
 			sjf = fullExplanation;
 			console.log("-FCFS: " + sjf + " " + algorithm);
-			document.getElementById('explanation-equation2').innerHTML = fullExplanation;
-			document.getElementById('explanation-equation2.1').innerHTML = averageWait;
-			document.getElementById('explanation-equation2.2').innerHTML = ' ms';
+
+			document.getElementById('explanation-equation2').innerHTML = 'TpEspera: ';
+			document.getElementById('explanation-equation2_1').innerHTML = averageWait;
+			document.getElementById('explanation-equation2_2').innerHTML = 'ms';
+			$("#explanation-equation2_3").html('<p><br>TpRetorno: ' + averageWait2 + 'ms');
+			$("#explanation-equation2_4").html('<p><br>TpRespuesta: ' + averageWait3 + 'ms');
 
 			//set the equation text
 			//updates equation
