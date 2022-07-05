@@ -184,12 +184,15 @@ $(document).ready(function () {
 			}
 			var averageWait = waitSum / processArray.length;
 			averageWait = Math.round(averageWait * 10000) / 10000;
+			averageWait = parseFloat(averageWait.toPrecision(4));
 			
 			var averageWait2 = waitSum2 / processArray.length;
 			averageWait2 = Math.round(averageWait2 * 10000) / 10000;
+			averageWait2 = parseFloat(averageWait2.toPrecision(4));
 			
 			var averageWait3 = waitSum3 / processArray.length;
 			averageWait3 = Math.round(averageWait3 * 10000) / 10000;
+			averageWait3 = parseFloat(averageWait3.toPrecision(4));
 
 			sjf = fullExplanation;
 			console.log("-FCFS: " + sjf + " " + algorithm);
