@@ -7,12 +7,13 @@
 
   <link rel="stylesheet" type="text/css" href="/css/bootstrap-simplex.css">
   <link rel="stylesheet" type="text/css" href="/css/cpu-scheduler.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
   <script src="/js/jquery.js"></script>
   <script src="/js/bootstrap.min.js"></script>
   <script src="/js/bootstrap-slider.js"></script>
   <script type="text/javascript" src="/js/MathJaxSetup.js"></script>
 
-  <title>AUTOMATIZADO</title>
+  <title>FINAL</title>
 </head>
 
 <body>
@@ -23,7 +24,7 @@
         <a class="link" href="index.html">PRIMERA ENTREGA</a>
       </div>
       <div class="col-md-6">
-        <a class="link" href="final.html">ENTREGA FINAL</a>
+        <a class="link" href="auto.html">SEGUNDA ENTREGA</a>
       </div>
     </div>
   </div>
@@ -32,7 +33,9 @@
     <div class="well">
       <div class="col-md-6">
         <span>Dar clic en "SIMULAR" para usar el modo automatizado o escribir los datos deseados en la tabla, máximo se
-          pueden 10 procesos.<br>La selección del algoritmo optimo se hace mediante el uso del tiempo promedio de espera.</span>
+          pueden 10 procesos. Para los algoritmos de reemplazo de página se pueden máximo 20 referencias. La selección
+          del algoritmo optimo se hace mediante el uso del tiempo promedio de
+          espera.</span>
       </div>
     </div>
   </div>
@@ -52,7 +55,7 @@
           </div>
           <div class="btn-group algorithm_dropdown" style="margin-left:5px;">
             <button id="RESET" type="button" class="btn btn-info dropdown-toggle">
-              <span>RESETEAR TABLA</span>
+              <span>RESETEAR PAGINA</span>
             </button>
           </div>
 
@@ -192,6 +195,9 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div id="main1" class="container">
 
     <div class="well">
       <div class="col-md-5">
@@ -204,143 +210,224 @@
         </table>
       </div>
     </div>
-
-    <div class="class well">
-      <div class="col-md-5">
-        FCFS
+    <div>
+      <div class="class well">
+        <div class="col-md-5">
+          FCFS
+        </div>
+        <div class="col-md-5">
+          <div>
+            <table>
+              <tbody>
+                <tr class="col-md-6">
+                  <td id="explanation-equation1"></td>
+                </tr>
+                <tr class="col-md-6">
+                  <td id="explanation-equation1_1"></td>
+                  <td id="explanation-equation1_2"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <div class="col-md-6" id="explanation-equation1_3">
+            </div>
+          </div>
+          <div>
+            <div class="col-md-6" id="explanation-equation1_4">
+            </div>
+          </div>
+        </div><!-- /column -->
       </div>
-      <div class="col-md-5">
-        <div>
-          <table>
-            <tbody>
-              <tr class="col-md-6">
-                <td id="explanation-equation1"></td>
-              </tr>
-              <tr class="col-md-6">
-                <td id="explanation-equation1_1"></td>
-                <td id="explanation-equation1_2"></td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="progress progress1" style="height:25px;margin-bottom:0px;"></div>
+      <ul class="tick-marks ruler1" id="rule1" data-items="10"></ul>
+      <br>
+      <div class="class well">
+        <div class="col-md-5">
+          SJF
         </div>
-        <div>
-          <div class="col-md-6" id="explanation-equation1_3">
+        <div class="col-md-5">
+          <div>
+            <table>
+              <tbody>
+                <tr class="col-md-6">
+                  <td id="explanation-equation2"></td>
+                </tr>
+                <tr class="col-md-6">
+                  <td id="explanation-equation2_1"></td>
+                  <td id="explanation-equation2_2"></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-        <div>
-          <div class="col-md-6" id="explanation-equation1_4">
+          <div>
+            <div class="col-md-6" id="explanation-equation2_3">
+            </div>
           </div>
-        </div>
-      </div><!-- /column -->
-    </div>
-    <div class="progress progress1" style="height:25px;margin-bottom:0px;"></div>
-    <ul class="tick-marks ruler1" id="rule1" data-items="10"></ul>
-    <br>
-    <div class="class well">
-      <div class="col-md-5">
-        SJF
+          <div>
+            <div class="col-md-6" id="explanation-equation2_4">
+            </div>
+          </div>
+        </div><!-- /column -->
       </div>
-      <div class="col-md-5">
-        <div>
-          <table>
-            <tbody>
-              <tr class="col-md-6">
-                <td id="explanation-equation2"></td>
-              </tr>
-              <tr class="col-md-6">
-                <td id="explanation-equation2_1"></td>
-                <td id="explanation-equation2_2"></td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="progress progress2" style="height:25px;margin-bottom:0px;"></div>
+      <ul class="tick-marks ruler2" id="rule2" data-items="10"></ul>
+      <br>
+      <div class="class well">
+        <div class="col-md-5">
+          PRIORIDAD
         </div>
-        <div>
-          <div class="col-md-6" id="explanation-equation2_3">
+        <div class="col-md-5">
+          <div>
+            <table>
+              <tbody>
+                <tr class="col-md-6">
+                  <td id="explanation-equation3"></td>
+                </tr>
+                <tr class="col-md-6">
+                  <td id="explanation-equation3_1"></td>
+                  <td id="explanation-equation3_2"></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-        <div>
-          <div class="col-md-6" id="explanation-equation2_4">
+          <div>
+            <div class="col-md-6" id="explanation-equation3_3">
+            </div>
           </div>
-        </div>
-      </div><!-- /column -->
-    </div>
-    <div class="progress progress2" style="height:25px;margin-bottom:0px;"></div>
-    <ul class="tick-marks ruler2" id="rule2" data-items="10"></ul>
-    <br>
-    <div class="class well">
-      <div class="col-md-5">
-        PRIORIDAD
+          <div>
+            <div class="col-md-6" id="explanation-equation3_4">
+            </div>
+          </div>
+        </div><!-- /column -->
       </div>
-      <div class="col-md-5">
-        <div>
-          <table>
-            <tbody>
-              <tr class="col-md-6">
-                <td id="explanation-equation3"></td>
-              </tr>
-              <tr class="col-md-6">
-                <td id="explanation-equation3_1"></td>
-                <td id="explanation-equation3_2"></td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="progress progress3" style="height:25px;margin-bottom:0px;"></div>
+      <ul class="tick-marks ruler3" id="rule3" data-items="10"></ul>
+      <br>
+      <div class="class well">
+        <div class="col-md-5">
+          ROUND ROBIN
         </div>
-        <div>
-          <div class="col-md-6" id="explanation-equation3_3">
+        <div class="col-md-5">
+          <div>
+            <table>
+              <tbody>
+                <tr class="col-md-6">
+                  <td id="explanation-equation4"></td>
+                </tr>
+                <tr class="col-md-6">
+                  <td id="explanation-equation4_1"></td>
+                  <td id="explanation-equation4_2"></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-        <div>
-          <div class="col-md-6" id="explanation-equation3_4">
+          <div>
+            <div class="col-md-6" id="explanation-equation4_3">
+            </div>
           </div>
-        </div>
-      </div><!-- /column -->
-    </div>
-    <div class="progress progress3" style="height:25px;margin-bottom:0px;"></div>
-    <ul class="tick-marks ruler3" id="rule3" data-items="10"></ul>
-    <br>
-    <div class="class well">
-      <div class="col-md-5">
-        ROUND ROBIN
+          <div>
+            <div class="col-md-6" id="explanation-equation4_4">
+            </div>
+          </div>
+        </div><!-- /column -->
       </div>
-      <div class="col-md-5">
-        <div>
-          <table>
-            <tbody>
-              <tr class="col-md-6">
-                <td id="explanation-equation4"></td>
-              </tr>
-              <tr class="col-md-6">
-                <td id="explanation-equation4_1"></td>
-                <td id="explanation-equation4_2"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <div class="col-md-6" id="explanation-equation4_3">
-          </div>
-        </div>
-        <div>
-          <div class="col-md-6" id="explanation-equation4_4">
-          </div>
-        </div>
-      </div><!-- /column -->
+      <div class="progress progress4" style="height:25px;margin-bottom:0px;"></div>
+      <ul class="tick-marks ruler4" id="rule4" data-items="10"></ul>
+      <br>
+
     </div>
-    <div class="progress progress4" style="height:25px;margin-bottom:0px;"></div>
-    <ul class="tick-marks ruler4" id="rule4" data-items="10"></ul>
-    <br>
+  </div>
 
-  </div><!-- /containter -->
 
-  <script src="/js/cpu-scheduler2.js"> </script>
-  <script src="/js/cpu-scheduler3.js"> </script>
-  <script src="/js/cpu-scheduler4.js"> </script>
-  <script src="/js/cpu-scheduler5.js"> </script>
+  <div class="main-panels">
 
-  <script>
-    Preview.Init();
-    Preview.Update();
-  </script>
+    <div class="collapsible-window">
+      <div class="collapsible-window1">
+        <div class="panels panels-option animate__animated  animate__fadeInUp">
+          <div class="input_set">
+            <p>Marcos</p>
+            <input min="1" max="10" type="number" value="3" id="input-frames" />
+          </div>
+          <div class="input_set">
+            <p>Referencias</p>
+            <input placeholder="Maximo 15 referencias" id="input-input" maxlength="29" />
+          </div>
+          <p class="error animate__animated  animate__fadeInDown hide-display" id="Error">Minimo 5 procesos</p>
+          <div class="input_set">
+            <p>Algoritmo</p>
+            <select id="input-algorithm">
+              <option value="lru">LRU</option>
+              <option value="fifo">FIFO</option>
+              <option value="optimal">Optimo</option>
+            </select>
+          </div>
+
+          <div class="space"></div>
+
+          <div class="button" id="input-start">Empezar</div>
+          <div class="button" id="input-clear">Borrar</div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div id="main" class="class well">
+      <div class="main">
+        <div class="panels panels-activity animate__animated  animate__fadeInUp">
+          <div class="parent_frame">
+            <div class="parent-frame-container">
+              <div class="frame-input">
+                <div class="col-md-5">
+                  LRU
+                </div>
+                <div class="frame-input-belt" id="output-input">
+                  <!--
+                                  <p>1</p>
+                                  <p>2</p>
+                                  <p>3</p>
+                                  -->
+                </div>
+              </div>
+              <div class="frame-history">
+                <div class="history-list" id="output-history">
+                  <!--
+                              <div class="history-entry animate__animated  animate__fadeInUp">
+                                  <small>1</small>
+                                  <p>1</p>
+                                  <div class="data">
+                                      <p>^ 5</p>
+                                      <p>Hit: O</p>
+                                      <p>Flt: X</p>
+                                  </div>
+                              </div>
+                          -->
+                </div>
+                <p>Page Faults : <span id="results-faults">0</span></p>
+                <p>Hits : <span id="results-hits">0</span></p>
+                <p>References : <span id="results-references">0</span></p>
+                <p>Page Fault Rate : <span id="results-faultrate">0</span></p>
+                <p>Hit Rate : <span id="results-hitrate">0</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /container -->
+
+    <script src="/js/cpu-scheduler2.js"> </script>
+    <script src="/js/cpu-scheduler3.js"> </script>
+    <script src="/js/cpu-scheduler4.js"> </script>
+    <script src="/js/cpu-scheduler5.js"> </script>
+    <script src="/js/script.js"> </script>
+    <!-- script src="/js/page-replacement.js"> </script> -->
+
+    <script>
+      Preview.Init();
+      Preview.Update();
+    </script>
 
 </body>
 

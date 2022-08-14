@@ -86,6 +86,10 @@ table th {
   text-align: center;
 }
 
+table  {
+  text-align: center;
+}
+
 table input {
   display: block !important;
   padding: 0 !important;

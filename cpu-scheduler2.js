@@ -18,6 +18,7 @@ $(document).ready(function () {
 	var position = 0;
 	//things are put into here to display
 	var bar = new progressBar();
+	var R = 0;
 	var fcfs = 0,
 		sjf = 0,
 		rr = 0,
@@ -439,6 +440,13 @@ $(document).ready(function () {
 		}
 	}
 	function run() {
+		if(R == 0){
+			document.getElementById("main1").style.display = "none";
+		}
+		else{
+			document.getElementById("main1").style.display = "block";
+		}
+
 		loadValues();
 		if (processArray.length > 0) {
 			sortArriveTimes();
@@ -611,6 +619,7 @@ $(document).ready(function () {
 			$("#burst_" + i).val(getRandomInt(1, 10));
 			$("#priority_" + i).val(getRandomInt(0, 10));
 		}
+		R = 1;
 		run();
 
 	})
@@ -620,7 +629,12 @@ $(document).ready(function () {
 			$("#burst_" + i).val("");
 			$("#priority_" + i).val("");
 		}
+		$('#enter_quantum').val(2);
+		$('#proccess_num').val(3);
+		processCount = 3;
+		R = 0;
 		run();
+		window.location.reload()
 	})
 	$(window).resize(function () {
 		createRuler(bar.sum);

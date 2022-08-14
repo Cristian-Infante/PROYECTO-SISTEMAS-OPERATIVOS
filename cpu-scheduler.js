@@ -1,3 +1,4 @@
+document.getElementById("main1").style.display = "none";
 $(document).ready(function () {
 	$('#explanation-equation');
 	$(".priority").collapse({
@@ -355,6 +356,7 @@ $(document).ready(function () {
 			if (algorithm == "Prioridad") {
 				priority();
 			}
+			document.getElementById("main1").style.display = "block";
 			bar.displayBar();
 		}
 	}
