@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="es">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-simplex.css">
+  <link rel="stylesheet" type="text/css" href="/css/cpu-scheduler.css">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/bootstrap-slider.js"></script>
+  <script type="text/javascript" src="/js/MathJaxSetup.js"></script>
+
+  <title>AUTOMATIZADO</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="well">
+      <div class="col-md-6">
+        <a class="link" href="index.html">PRIMERA ENTREGA</a>
+      </div>
+      <div class="col-md-6">
+        <a class="link" href="final.html">ENTREGA FINAL</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="well">
+      <div class="col-md-6">
+        <span>Dar clic en "SIMULAR" para usar el modo automatizado o escribir los datos deseados en la tabla, máximo se
+          pueden 10 procesos.<br>La selección del algoritmo optimo se hace mediante el uso del tiempo promedio de espera.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="well2" style="margin-top:20px;">
+
+      <div class="row">
+
+        <div class="col-md-5">
+
+          <div class="btn-group algorithm_dropdown" style="margin-left:5px;">
+            <button id="SIMULAR" type="button" class="btn btn-info dropdown-toggle">
+              <span>SIMULAR</span>
+            </button>
+          </div>
+          <div class="btn-group algorithm_dropdown" style="margin-left:5px;">
+            <button id="RESET" type="button" class="btn btn-info dropdown-toggle">
+              <span>RESETEAR TABLA</span>
+            </button>
+          </div>
+
+        </div><!-- /column -->
+        <div class="col-md-4">
+          <div>
+            <div>
+              <label>Número de procesos:</label>
+            </div>
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button id='remove_row' type="button" class="btn btn-default btn-number" data-type="minus">
+                  <span class="glyphicon glyphicon-minus"></span>
+                </button>
+              </span>
+              <input id="proccess_num" disabled="disabled" class="form-control input-number" value="3" maxlength="2">
+              <span class="input-group-btn">
+                <button id='add_row' type="button" class="btn btn-default btn-number" data-type="plus">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div id="solver_group">
+            <div>
+              <label>Tiempo de Quantum:</label>
+            </div>
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button id="subtract_quantum" type="button" class="btn btn-default btn-number" data-type="minus"
+                  data-field="quant[1]">
+                  <span class="glyphicon glyphicon-minus"></span>
+                </button>
+              </span>
+              <input id="enter_quantum" disabled="disabled" type="number" name="quant[1]"
+                class="form-control input-number" value="2" maxlength="2">
+              <span class="input-group-btn">
+                <button id="add_quantum" type="button" class="btn btn-default btn-number" data-type="plus"
+                  data-field="quant[1]">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div><!-- /column -->
+        <div class="col-md-4">
+          <div>
+            <div id="explanation-equation">
+            </div>
+          </div>
+        </div><!-- /column -->
+      </div><!-- /row -->
+
+    </div><!-- /well -->
+
+    <table class="table table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th>Proceso:</th>
+          <th>Tiempo de llegada (ms):</th>
+          <th>Tiempo de CPU (ms):</th>
+          <th class="priority collapse">Prioridad:</th>
+        </tr>
+      </thead>
+      <tbody id="processTable">
+        <tr id="row_1" class="collapse in">
+          <th> P1</th>
+          <td><input id="arrive_1" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input type="number" id="burst_1" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_1" type="number" class="form-control" placeholder="0" />
+          </td>
+        </tr>
+        <tr id="row_2" class="collapse in">
+          <th> P2 </th>
+          <td><input id="arrive_2" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input type="number" id="burst_2" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_2" type="number" class="form-control" placeholder="0" />
+          </td>
+        </tr>
+        <tr id="row_3" class="collapse in">
+          <th> P3 </th>
+          <td><input id="arrive_3" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_3" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_3" type="number" class="form-control" placeholder="0" />
+          </td>
+        </tr>
+        <tr id="row_4" class="collapse ">
+          <th> P4 </th>
+          <td><input id="arrive_4" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_4" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_4" type="number" class="form-control" placeholder="0" />
+          </td>
+        </tr>
+        <tr id="row_5" class="collapse">
+          <th> P5 </th>
+          <td><input id="arrive_5" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_5" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_5" type="number" class="form-control" placeholder="0" />
+          </td>
+        </tr>
+        <tr id="row_6" class="collapse">
+          <th> P6 </th>
+          <td><input id="arrive_6" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_6" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_6" type="number" class="form-control" placeholder="0" />
+          </td>
+        </tr>
+        <tr id="row_7" class="collapse">
+          <th> P7 </th>
+          <td><input id="arrive_7" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_7" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_7" type="number" class="form-control" placeholder="0" />
+          </td>
+        </tr>
+        <tr id="row_8" class="collapse">
+          <th> P8 </th>
+          <td><input id="arrive_8" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_8" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_8" type="number" class="form-control" placeholder="0" />
+          </td>
+        </tr>
+        <tr id="row_9" class="collapse">
+          <th> P9 </th>
+          <td><input id="arrive_9" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_9" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_9" type="number" class="form-control" placeholder="0" />
+          </td>
+        </tr>
+        <tr id="row_10" class="collapse">
+          <th> P10 </th>
+          <td><input id="arrive_10" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td><input id="burst_10" type="number" class="form-control" placeholder="0" maxlength="2" /></td>
+          <td class="priority collapse"><input id="priority_10" type="number" class="form-control" placeholder="0" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="well">
+      <div class="col-md-5">
+        <table>
+          <tbody>
+            <tr>
+              <td id="optimo"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="class well">
+      <div class="col-md-5">
+        FCFS
+      </div>
+      <div class="col-md-5">
+        <div>
+          <table>
+            <tbody>
+              <tr class="col-md-6">
+                <td id="explanation-equation1"></td>
+              </tr>
+              <tr class="col-md-6">
+                <td id="explanation-equation1_1"></td>
+                <td id="explanation-equation1_2"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="col-md-6" id="explanation-equation1_3">
+          </div>
+        </div>
+        <div>
+          <div class="col-md-6" id="explanation-equation1_4">
+          </div>
+        </div>
+      </div><!-- /column -->
+    </div>
+    <div class="progress progress1" style="height:25px;margin-bottom:0px;"></div>
+    <ul class="tick-marks ruler1" id="rule1" data-items="10"></ul>
+    <br>
+    <div class="class well">
+      <div class="col-md-5">
+        SJF
+      </div>
+      <div class="col-md-5">
+        <div>
+          <table>
+            <tbody>
+              <tr class="col-md-6">
+                <td id="explanation-equation2"></td>
+              </tr>
+              <tr class="col-md-6">
+                <td id="explanation-equation2_1"></td>
+                <td id="explanation-equation2_2"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="col-md-6" id="explanation-equation2_3">
+          </div>
+        </div>
+        <div>
+          <div class="col-md-6" id="explanation-equation2_4">
+          </div>
+        </div>
+      </div><!-- /column -->
+    </div>
+    <div class="progress progress2" style="height:25px;margin-bottom:0px;"></div>
+    <ul class="tick-marks ruler2" id="rule2" data-items="10"></ul>
+    <br>
+    <div class="class well">
+      <div class="col-md-5">
+        PRIORIDAD
+      </div>
+      <div class="col-md-5">
+        <div>
+          <table>
+            <tbody>
+              <tr class="col-md-6">
+                <td id="explanation-equation3"></td>
+              </tr>
+              <tr class="col-md-6">
+                <td id="explanation-equation3_1"></td>
+                <td id="explanation-equation3_2"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="col-md-6" id="explanation-equation3_3">
+          </div>
+        </div>
+        <div>
+          <div class="col-md-6" id="explanation-equation3_4">
+          </div>
+        </div>
+      </div><!-- /column -->
+    </div>
+    <div class="progress progress3" style="height:25px;margin-bottom:0px;"></div>
+    <ul class="tick-marks ruler3" id="rule3" data-items="10"></ul>
+    <br>
+    <div class="class well">
+      <div class="col-md-5">
+        ROUND ROBIN
+      </div>
+      <div class="col-md-5">
+        <div>
+          <table>
+            <tbody>
+              <tr class="col-md-6">
+                <td id="explanation-equation4"></td>
+              </tr>
+              <tr class="col-md-6">
+                <td id="explanation-equation4_1"></td>
+                <td id="explanation-equation4_2"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="col-md-6" id="explanation-equation4_3">
+          </div>
+        </div>
+        <div>
+          <div class="col-md-6" id="explanation-equation4_4">
+          </div>
+        </div>
+      </div><!-- /column -->
+    </div>
+    <div class="progress progress4" style="height:25px;margin-bottom:0px;"></div>
+    <ul class="tick-marks ruler4" id="rule4" data-items="10"></ul>
+    <br>
+
+  </div><!-- /containter -->
+
+  <script src="/js/cpu-scheduler2.js"> </script>
+  <script src="/js/cpu-scheduler3.js"> </script>
+  <script src="/js/cpu-scheduler4.js"> </script>
+  <script src="/js/cpu-scheduler5.js"> </script>
+
+  <script>
+    Preview.Init();
+    Preview.Update();
+  </script>
+
+</body>
+
+</html>
