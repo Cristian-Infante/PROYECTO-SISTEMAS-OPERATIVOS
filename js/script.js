@@ -318,22 +318,6 @@ class Optimal extends FIFO{
 
 }
 
-/*
-p_lru = new LRU(3, '')
-
-//input = '7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0 1 7 0 1'.split(" ")
-//input = '1 2 3 4 1 2 5 1 2 3 4 5'.split(" ")    
-input = '5 7 6 5 7 3'.split(" ")
-p_lru.getinput_list(input)
-p_lru.page_run()
-console.log(p_lru.history)
-*/
-
-/*
-for(let i = 0; i < input.length; i++){
-    console.log(p_lru.page_step())
-}
-*/
 
 class View{
     constructor(){
@@ -519,6 +503,8 @@ class View{
     }
 }
 
+var Start;
+
 class Controller{
     
     constructor(view=new View()) {
@@ -534,7 +520,7 @@ class Controller{
         this.algorithms = {
             lru : LRU,
             fifo : FIFO,
-            optimal: Optimal,
+            optimo: Optimal,
         }
 
         this.cont_data = {
@@ -593,7 +579,7 @@ class Controller{
             let process = new this.algorithms[input.algorithm](input.frame, '')
             process.getinput_list(inputentry)
             process.page_run()
-            console.log(process.history)
+            //console.log(process.history)
             this.View.process_results(process.history)
             this.cont_data.error_pass = true
         }
@@ -625,16 +611,62 @@ class Controller{
 }
 
 $('#input-start').click(function () {
+    console.log("ALGORITMO: " + document.querySelector("#input-algorithm").value);
     col1 = document.getElementById('input-input').value;
     col2 = col1.toString();
     referencias = col2.split(' ');
     if(referencias.length >= 4){
         document.getElementById("main").style.display = "block";
     }
+    document.querySelector('#name').value = document.querySelector("#input-algorithm").value.toUpperCase();
 })
 
 $('#input-clear').click(function () {
     document.getElementById("main").style.display = "none";
 })
 
-let controller = new Controller()
+let controller = new Controller();
+
+$('#SIMULAR').click(function () {
+    console.log("hola2");
+
+	setTimeout(function () {
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+        marcos = getRandomInt(2, 11);
+        maxnumber = Number($("#proccess_num").val());
+    
+        var refeciaS = '';
+    
+        for (var i = 1; i <= 29; i++) {
+            if (i % 2 == 0) {
+                refeciaS += ' ';
+            } else {
+                console.log("MAX:" + maxnumber);
+                refeciaS += getRandomInt(1, maxnumber + 1);
+            }
+        }
+        $('#input-input').val(refeciaS);
+        $('#input-frames').val(marcos);
+        alg = getRandomInt(1,4);
+        console.log("alg: " + alg);
+        if(alg == 1){
+            const $select = document.querySelector('#input-algorithm');
+            $select.value = 'lru'
+        }
+        if(alg == 2){
+            const $select = document.querySelector('#input-algorithm');
+            $select.value = 'fifo'
+        }
+        if(alg == 3){
+            const $select = document.querySelector('#input-algorithm');
+            $select.value = 'optimo'
+        }
+        document.querySelector('#name').value = document.querySelector("#input-algorithm").value.toUpperCase();
+        controller.start();
+        document.querySelector('#input-start').click();
+	}, 300);
+})

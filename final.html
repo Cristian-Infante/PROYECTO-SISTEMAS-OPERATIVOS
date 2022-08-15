@@ -346,20 +346,20 @@
       <div class="collapsible-window1">
         <div class="panels panels-option animate__animated  animate__fadeInUp">
           <div class="input_set">
-            <p>Marcos</p>
+            <div id="option"><p>Marcos</p></div>
             <input min="1" max="10" type="number" value="3" id="input-frames" />
           </div>
           <div class="input_set">
-            <p>Referencias</p>
+            <div id="option"><p>Referencias</p></div>
             <input placeholder="Maximo 15 referencias" id="input-input" maxlength="29" />
           </div>
           <p class="error animate__animated  animate__fadeInDown hide-display" id="Error">Minimo 5 procesos</p>
           <div class="input_set">
-            <p>Algoritmo</p>
+            <div id="option"><p >Algoritmo</p></div>
             <select id="input-algorithm">
               <option value="lru">LRU</option>
               <option value="fifo">FIFO</option>
-              <option value="optimal">Optimo</option>
+              <option value="optimo">OPTIMO</option>
             </select>
           </div>
 
@@ -379,9 +379,7 @@
           <div class="parent_frame">
             <div class="parent-frame-container">
               <div class="frame-input">
-                <div class="col-md-5">
-                  LRU
-                </div>
+                <input disabled id="name">
                 <div class="frame-input-belt" id="output-input">
                   <!--
                                   <p>1</p>
@@ -404,11 +402,11 @@
                               </div>
                           -->
                 </div>
-                <p>Page Faults : <span id="results-faults">0</span></p>
-                <p>Hits : <span id="results-hits">0</span></p>
-                <p>References : <span id="results-references">0</span></p>
-                <p>Page Fault Rate : <span id="results-faultrate">0</span></p>
-                <p>Hit Rate : <span id="results-hitrate">0</span></p>
+                <p>Fallos de pagina : <span id="results-faults">0</span></p>
+                <p>Exitos : <span id="results-hits">0</span></p>
+                <p>Referencias : <span id="results-references">0</span></p>
+                <p>Tasa de fallos de pagina : <span id="results-faultrate">0</span></p>
+                <p>Tasa de exitos : <span id="results-hitrate">0</span></p>
               </div>
             </div>
           </div>

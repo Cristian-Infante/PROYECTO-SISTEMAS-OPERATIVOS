@@ -29,17 +29,6 @@ $(document).ready(function () {
 		run()
 	}, 200);
 
-
-
-	//used for debugging
-	function printArray() {
-		console.log("Printing array");
-		for (var i = 0; i < processArray.length; i++) {
-			console.log(processArray[i].processName);
-			console.log(processArray[i].burstTime);
-			console.log(processArray[i].arrivalTime);
-		};
-	}
 	//used for SJF, finds the index of the next available smallest job
 	function findSmallestBurstIndex() {
 		var smallestIndex = 0;
@@ -88,7 +77,6 @@ $(document).ready(function () {
 		for (var i = 0; i < processArray.length; i++) {
 			if (processArray[i].done == false) {
 				done = false;
-				//console.log("not done   i:"+i);
 			}
 		}
 		return done;
@@ -138,17 +126,14 @@ $(document).ready(function () {
 		this.displayBar = function () {
 			var pos = 0;
 			for (var i = 0; i < this.indexes.length; i++) {
-				console.log("name:" + this.names[i] + "  index:" + this.indexes[i]);
 				var length = (this.indexes[i] / this.sum) * 100;
 				addToBar(this.names[i], length, pos, this.indexes[i], i);
 				pos += this.indexes[i];
 				pos = parseFloat(pos.toPrecision(12));
 			}
 			createRuler(this.sum);
-			console.log("sum:" + this.sum + "   " + runningTime)
 
 			var utilization = parseFloat((runningTime / this.sum).toPrecision(3)) * 100;
-			console.log(utilization)
 
 			sortNames();
 			var waitTimes = [];
@@ -195,13 +180,12 @@ $(document).ready(function () {
 			averageWait3 = parseFloat(averageWait3.toPrecision(4));
 
 			sjf = fullExplanation;
-			console.log("-FCFS: " + sjf + " " + algorithm);
 
 			document.getElementById('explanation-equation3').innerHTML = 'TpEspera: ';
 			document.getElementById('explanation-equation3_1').innerHTML = averageWait;
 			document.getElementById('explanation-equation3_2').innerHTML = 'ms';
-			$("#explanation-equation3_3").html('<p><br>TpRetorno: ' + averageWait2 + 'ms');
-			$("#explanation-equation3_4").html('<p><br>TpRespuesta: ' + averageWait3 + 'ms');
+			$("#explanation-equation3_3").html('<p id="p"><br>TpRetorno: ' + averageWait2 + 'ms');
+			$("#explanation-equation3_4").html('<p id="p"><br>TpRespuesta: ' + averageWait3 + 'ms');
 
 			//set the equation text
 			//updates equation
@@ -222,8 +206,6 @@ $(document).ready(function () {
 		this.finished = function () {
 			this.done = true;
 			this.finishTime = position;
-			console.log(this.processName + " finished at position:" + position);
-			console.log("wait time:" + (this.finishTime - this.arrivalTime - this.initialBurst));
 		}
 	}
 	//sorts the processArray in terms of arrival times
@@ -276,7 +258,6 @@ $(document).ready(function () {
 		end = parseFloat(end.toPrecision(12));
 
 		if ($("#bar3_" + index).length == 0) {
-			console.log(".progress3")
 			$(".progress3").append(" <div class='progress-bar' data-toggle='tooltip' title=' ' data-placement='right' id='bar3_" + index + "' role='progressbar' >" + processName + "</div>");
 		} else {
 			$("#bar3_" + index).removeClass("progress-bar-context");
@@ -325,7 +306,6 @@ $(document).ready(function () {
 					processArray[i].burstTime < processArray[proccessIndex].burstTime &&
 					i != proccessIndex &&
 					processArray[i].hasStarted == false) {
-					console.log("interupted by:" + processArray[i].processName);
 					processArray[proccessIndex].burstTime -= processArray[i].arrivalTime - position;
 					bar.addItem(processArray[proccessIndex].processName, processArray[i].arrivalTime - position);
 					processArray[proccessIndex].hasStarted = true;
@@ -342,7 +322,6 @@ $(document).ready(function () {
 		while (isDone() == false) {
 			fillGaps();
 			var i = findSmallestBurstIndex();
-			console.log("starting:" + processArray[i].processName);
 			findNextJump(i);
 		}
 	}
@@ -356,7 +335,6 @@ $(document).ready(function () {
 					processArray[i].arrivalTime > processArray[proccessIndex].arrivalTime &&
 					processArray[i].priority < processArray[proccessIndex].priority &&
 					processArray[i].hasStarted == false) {
-					console.log("interupted by:" + processArray[i].processName);
 					processArray[proccessIndex].burstTime -= processArray[i].arrivalTime - position;
 					bar.addItem(processArray[proccessIndex].processName, processArray[i].arrivalTime - position);
 					processArray[proccessIndex].hasStarted = true;
@@ -373,7 +351,6 @@ $(document).ready(function () {
 		while (isDone() == false) {
 			fillGaps();
 			var i = findSmallestPriorityIndex();
-			console.log("starting:" + processArray[i].processName);
 			findNextJump(i);
 		}
 	}
@@ -384,13 +361,11 @@ $(document).ready(function () {
 				if (processArray[index].burstTime <= timeQuantum && processArray[index].done == false && processArray[index].arrivalTime <= position) {
 					bar.addItem(processArray[index].processName, processArray[index].burstTime);
 					processArray[index].finished();
-					console.log("finished:" + processArray[index].processName + "  postion:" + position);
 					index = (index + 1) % processArray.length
 					return index;
 					break;
 				}
 				if (processArray[index].done == false && processArray[index].arrivalTime <= position && processArray[index].burstTime > timeQuantum) {
-					console.log("switched to:" + processArray[index].processName);
 					processArray[index].burstTime -= timeQuantum;
 					bar.addItem(processArray[index].processName, timeQuantum);
 				}
@@ -401,7 +376,6 @@ $(document).ready(function () {
 		sortArriveTimes();
 		while (isDone() == false) {
 			fillGaps();
-			console.log("starting:" + processArray[i].processName);
 			i = findNextJump(i);
 		}
 	}
@@ -416,26 +390,22 @@ $(document).ready(function () {
 			/*algorithm = "FCFS";
 			bar = new progressBar();
 			FCFS();
-			bar.displayBar();
-			console.log(algorithm);*/
+			bar.displayBar();*/
 
 			/*algorithm = "SJF";
 			bar = new progressBar();
 			SJF();
-			bar.displayBar();
-			console.log(algorithm);*/
+			bar.displayBar();*/
 
 			/*algorithm = "Round Robin";
 			bar = new progressBar();
 			roundRobin();
-			bar.displayBar();
-			console.log(algorithm);*/
+			bar.displayBar();*/
 
 			algorithm = "Prioridad";
 			bar = new progressBar();
 			priority();
 			bar.displayBar();
-			console.log(algorithm);
 		}
 	}
 	//creates the tick marks under the gant chart
@@ -445,7 +415,6 @@ $(document).ready(function () {
 		var word = " " + itemAmount;
 
 		if (itemAmount > 5000) {
-			console.log("length:" + word.length)
 			var power = Math.pow(10, word.length - 2);
 			itemAmount = itemAmount / power;
 			multi = power;
@@ -513,7 +482,6 @@ $(document).ready(function () {
 	});
 	$('#SIMULAR').click(function () {
 		processCount = Number($("#proccess_num").val());
-		console.log(algorithm + " " + processCount);
 		run();
 	})
 	$(window).resize(function () {

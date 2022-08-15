@@ -1642,8 +1642,8 @@ h6,
   font-size: 12px;
 }
 
-p {
-  margin: 0 0 9px;
+#p {
+  margin-bottom: 20px;
 }
 
 .lead {

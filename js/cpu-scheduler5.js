@@ -28,17 +28,6 @@ $(document).ready(function () {
 		run()
 	}, 200);
 
-
-
-	//used for debugging
-	function printArray() {
-		console.log("Printing array");
-		for (var i = 0; i < processArray.length; i++) {
-			console.log(processArray[i].processName);
-			console.log(processArray[i].burstTime);
-			console.log(processArray[i].arrivalTime);
-		};
-	}
 	//used for SJF, finds the index of the next available smallest job
 	function findSmallestBurstIndex() {
 		var smallestIndex = 0;
@@ -86,7 +75,6 @@ $(document).ready(function () {
 		for (var i = 0; i < processArray.length; i++) {
 			if (processArray[i].done == false) {
 				done = false;
-				//console.log("not done   i:"+i);
 			}
 		}
 		return done;
@@ -136,17 +124,14 @@ $(document).ready(function () {
 		this.displayBar = function () {
 			var pos = 0;
 			for (var i = 0; i < this.indexes.length; i++) {
-				console.log("name:" + this.names[i] + "  index:" + this.indexes[i]);
 				var length = (this.indexes[i] / this.sum) * 100;
 				addToBar(this.names[i], length, pos, this.indexes[i], i);
 				pos += this.indexes[i];
 				pos = parseFloat(pos.toPrecision(12));
 			}
 			createRuler(this.sum);
-			console.log("sum:" + this.sum + "   " + runningTime)
 
 			var utilization = parseFloat((runningTime / this.sum).toPrecision(3)) * 100;
-			console.log(utilization)
 
 			sortNames();
 			var waitTimes = [];
@@ -193,13 +178,12 @@ $(document).ready(function () {
 			averageWait3 = parseFloat(averageWait3.toPrecision(4));
 
 			sjf = fullExplanation;
-			console.log("-FCFS: " + sjf + " " + algorithm);
 
 			document.getElementById('explanation-equation4').innerHTML = 'TpEspera: ';
 			document.getElementById('explanation-equation4_1').innerHTML = averageWait;
 			document.getElementById('explanation-equation4_2').innerHTML = 'ms';
-			$("#explanation-equation4_3").html('<p><br>TpRetorno: ' + averageWait2 + 'ms');
-			$("#explanation-equation4_4").html('<p><br>TpRespuesta: ' + averageWait3 + 'ms');
+			$("#explanation-equation4_3").html('<p id="p"><br>TpRetorno: ' + averageWait2 + 'ms');
+			$("#explanation-equation4_4").html('<p id="p"><br>TpRespuesta: ' + averageWait3 + 'ms');
 
 			//set the equation text
 			//updates equation
@@ -219,8 +203,6 @@ $(document).ready(function () {
 		this.finished = function () {
 			this.done = true;
 			this.finishTime = position;
-			console.log(this.processName + " finished at position:" + position);
-			console.log("wait time:" + (this.finishTime - this.arrivalTime - this.initialBurst));
 		}
 	}
 	//sorts the processArray in terms of arrival times
@@ -271,7 +253,6 @@ $(document).ready(function () {
 		var end = start + duration;
 		end = parseFloat(end.toPrecision(12));
 		if ($("#bar4_" + index).length == 0) {
-			console.log(".progress4")
 			$(".progress4").append(" <div class='progress-bar' data-toggle='tooltip' title=' ' data-placement='right' id='bar4_" + index + "' role='progressbar' >" + processName + "</div>");
 		} else {
 			$("#bar4_" + index).removeClass("progress-bar-context");
@@ -320,7 +301,6 @@ $(document).ready(function () {
 					processArray[i].burstTime < processArray[proccessIndex].burstTime &&
 					i != proccessIndex &&
 					processArray[i].hasStarted == false) {
-					console.log("interupted by:" + processArray[i].processName);
 					processArray[proccessIndex].burstTime -= processArray[i].arrivalTime - position;
 					bar.addItem(processArray[proccessIndex].processName, processArray[i].arrivalTime - position);
 					processArray[proccessIndex].hasStarted = true;
@@ -337,7 +317,6 @@ $(document).ready(function () {
 		while (isDone() == false) {
 			fillGaps();
 			var i = findSmallestBurstIndex();
-			console.log("starting:" + processArray[i].processName);
 			findNextJump(i);
 		}
 	}
@@ -351,7 +330,6 @@ $(document).ready(function () {
 					processArray[i].arrivalTime > processArray[proccessIndex].arrivalTime &&
 					processArray[i].priority < processArray[proccessIndex].priority &&
 					processArray[i].hasStarted == false) {
-					console.log("interupted by:" + processArray[i].processName);
 					processArray[proccessIndex].burstTime -= processArray[i].arrivalTime - position;
 					bar.addItem(processArray[proccessIndex].processName, processArray[i].arrivalTime - position);
 					processArray[proccessIndex].hasStarted = true;
@@ -368,7 +346,6 @@ $(document).ready(function () {
 		while (isDone() == false) {
 			fillGaps();
 			var i = findSmallestPriorityIndex();
-			console.log("starting:" + processArray[i].processName);
 			findNextJump(i);
 		}
 	}
@@ -379,13 +356,11 @@ $(document).ready(function () {
 				if (processArray[index].burstTime <= timeQuantum && processArray[index].done == false && processArray[index].arrivalTime <= position) {
 					bar.addItem(processArray[index].processName, processArray[index].burstTime);
 					processArray[index].finished();
-					console.log("finished:" + processArray[index].processName + "  postion:" + position);
 					index = (index + 1) % processArray.length
 					return index;
 					break;
 				}
 				if (processArray[index].done == false && processArray[index].arrivalTime <= position && processArray[index].burstTime > timeQuantum) {
-					console.log("switched to:" + processArray[index].processName);
 					processArray[index].burstTime -= timeQuantum;
 					bar.addItem(processArray[index].processName, timeQuantum);
 				}
@@ -396,7 +371,6 @@ $(document).ready(function () {
 		sortArriveTimes();
 		while (isDone() == false) {
 			fillGaps();
-			console.log("starting:" + processArray[i].processName);
 			i = findNextJump(i);
 		}
 	}
@@ -413,14 +387,8 @@ $(document).ready(function () {
 		Optimo[2] = parseFloat(Optimo[2].toPrecision(4));
 		Optimo[3] = Number(document.getElementById('explanation-equation4_1').innerHTML);
 		Optimo[3] = parseFloat(Optimo[3].toPrecision(4));
-
-		console.log("fcfs: " + Optimo[0]);
-		console.log("sjf: " + Optimo[1]);
-		console.log("pr: " + Optimo[2]);
-		console.log("rr: " + Optimo[3]);
 			
 		let dataLen = Optimo.length;
-		//console.log("dataLen",dataLen);
 		for(let i=0; i < dataLen; i++){
 			for(let j=0; j < dataLen; j++){
 				if(j+1 !== dataLen){
@@ -436,24 +404,18 @@ $(document).ready(function () {
 				}  
 			}
 		}
-		console.log(Optimo);
-		console.log(Optimo2);
 		if(Optimo[0] == Optimo[1] && Optimo[1] == Optimo[2] && Optimo[2] == Optimo[3]){
-			console.log("Todos los algoritmos tienen la misma efectividad");
 			document.getElementById('optimo').innerHTML = 'Todos los algoritmos tienen la misma efectividad';
 		}
 		else{
 			if(Optimo[0] == Optimo[1] && Optimo[1] == Optimo[2]){
-				console.log("Excepto " + Optimo2[3] + " todos los algoritmos tienen la misma efectividad");
 				document.getElementById('optimo').innerHTML = 'Excepto ' + Optimo2[3] + ' todos los algoritmos tienen la misma efectividad';
 			}
 			else{
 				if(Optimo[0] == Optimo[1]){
-					console.log("Los mejores algoritmos son: " + Optimo2[0] + " y " + Optimo2[1]);
 					document.getElementById('optimo').innerHTML = 'Los mejores algoritmos son: ' + Optimo2[0] + ' y ' + Optimo2[1];
 				}
 				else{
-					console.log("El mejor algoritmo es:" + Optimo2[0]);
 					document.getElementById('optimo').innerHTML = 'El mejor algoritmo es: ' + Optimo2[0];
 				}
 			}
@@ -468,26 +430,22 @@ $(document).ready(function () {
 			/*algorithm = "FCFS";
 			bar = new progressBar();
 			FCFS();
-			bar.displayBar();
-			console.log(algorithm);*/
+			bar.displayBar();*/
 
 			/*algorithm = "SJF";
 			bar = new progressBar();
 			SJF();
-			bar.displayBar();
-			console.log(algorithm);*/
+			bar.displayBar();*/
 
 			algorithm = "Round Robin";
 			bar = new progressBar();
 			roundRobin();
 			bar.displayBar();
-			console.log(algorithm);
 
 			/*algorithm = "Prioridad";
 			bar = new progressBar();
 			priority();
-			bar.displayBar();
-			console.log(algorithm);*/
+			bar.displayBar();*/
 			optimo();
 		}
 	}
@@ -498,7 +456,6 @@ $(document).ready(function () {
 		var word = " " + itemAmount;
 
 		if (itemAmount > 5000) {
-			console.log("length:" + word.length)
 			var power = Math.pow(10, word.length - 2);
 			itemAmount = itemAmount / power;
 			multi = power;
