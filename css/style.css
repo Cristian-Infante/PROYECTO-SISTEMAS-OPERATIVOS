@@ -108,7 +108,7 @@ body{
     font-size: 20px;
     margin-bottom: 5px;
     color: #000;
-    background-color: #ffffff;
+    background-color: #f4f4f4;
     border: none;
 }
 #option{
@@ -198,7 +198,7 @@ body{
   .collapsible-window1 {
     width: 60%;
     display: flex;
-    padding: var(--dl-space-space-threeunits);
+    padding: var(--dl-space-space-oneunit);
     align-self: center;
     align-items: center;
     flex-direction: column;
@@ -403,4 +403,250 @@ body{
     .space{
         height: 0rem;
     }
+  }
+
+  
+  :root {
+    --dl-size-size-medium: 96px;
+    --dl-size-size-xlarge: 192px;
+    --dl-size-size-xsmall: 16px;
+    --dl-space-space-unit: 16px;
+    --dl-size-size-xxlarge: 288px;
+    --dl-size-size-maxwidth: 1400px;
+    --dl-radius-radius-round: 50%;
+    --dl-space-space-halfunit: 8px;
+    --dl-space-space-sixunits: 96px;
+    --dl-space-space-twounits: 32px;
+    --dl-space-space-oneunit: 16px;
+    --dl-radius-radius-radius2: 2px;
+    --dl-radius-radius-radius4: 4px;
+    --dl-radius-radius-radius8: 8px;
+    --dl-space-space-fiveunits: 80px;
+    --dl-space-space-fourunits: 64px;
+    --dl-space-space-threeunits: 48px;
+    --dl-space-space-oneandhalfunits: 24px;
+  }
+  .collapsible-window1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .collapsible-resum1 {
+    width: 100%;
+    display: flex;
+    padding: var(--dl-space-space-unit);
+    align-self: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .collapsible-text {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+  }
+  .collapsible-form1 {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding-top: var(--dl-space-space-halfunit);
+  }
+  .collapsible-container1 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .collapsible-container11 {
+    flex: 0 0 auto;
+    width: 20%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .collapsible-window11 {
+    width: 100%;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .collapsible-text01 {
+    width: 50%;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    padding-top: var(--dl-space-space-unit);
+    padding-left: var(--dl-space-space-halfunit);
+    padding-right: var(--dl-space-space-halfunit);
+    flex-direction: row;
+    padding-bottom: var(--dl-space-space-unit);
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .collapsible-text02 {
+    width: auto;
+    font-size: 14px;
+    font-style: normal;
+    text-align: center;
+    font-weight: 400;
+  }
+  .collapsible-textinput {
+    width: 50%;
+    height: auto;
+    font-size: 14px;
+    text-align: center;
+  }
+  .collapsible-container12 {
+    flex: 0 0 auto;
+    width: 50%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .collapsible-window12 {
+    width: 100%;
+    display: flex;
+    padding: var(--dl-space-space-halfunit);
+    align-self: center;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .collapsible-text03 {
+    width: 50%;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .collapsible-text04 {
+    font-size: 14px;
+    font-style: normal;
+    text-align: center;
+    font-weight: 400;
+  }
+  .collapsible-textinput1 {
+    width: 50%;
+    height: auto;
+    font-size: 14px;
+    align-self: center;
+    max-height: auto;
+    text-align: center;
+  }
+  .collapsible-container1 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .collapsible-container2 {
+    flex: 0 0 auto;
+    width: 20%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .collapsible-window13 {
+    width: 100%;
+    display: flex;
+    padding: var(--dl-space-space-halfunit);
+    align-self: center;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .collapsible-text09 {
+    width: 50%;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .collapsible-text10 {
+    font-size: 14px;
+    font-style: normal;
+    text-align: center;
+    font-weight: 400;
+  }
+  .collapsible-textinput2 {
+    width: 50%;
+    height: auto;
+    font-size: 14px;
+    text-align: center;
+  }
+  .collapsible-container13 {
+    flex: 0 0 auto;
+    width: 50%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .collapsible-window14 {
+    width: 100%;
+    display: flex;
+    padding: var(--dl-space-space-halfunit);
+    align-self: center;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .collapsible-text11 {
+    width: 50%;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .collapsible-text12 {
+    font-size: 14px;
+    font-style: normal;
+    text-align: center;
+    font-weight: 400;
+  }
+  .collapsible-textinput3 {
+    width: 50%;
+    height: auto;
+    font-size: 14px;
+    text-align: center;
+  }
+  .collapsible-container14 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    margin-top: var(--dl-space-space-unit);
+    align-items: center;
+    border-radius: var(--dl-radius-radius-radius4);
+    justify-content: center;
+  }
+  .collapsible-button1 {
+    color: #FFFFFF;
+    width: 30%;
+    text-align: center;
+    background-color: #000000;
+  }
+  .collapsible-text13 {
+    font-size: 14px;
   }

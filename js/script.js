@@ -1,5 +1,6 @@
 document.getElementById("main").style.display = "none";
 document.getElementById("main1").style.display = "none";
+document.getElementById("main3").style.display = "none";
 class Page{
     constructor(content,tick=0){
         this.content = content
@@ -327,7 +328,6 @@ class View{
                 frame : document.querySelector("#input-frames"),
                 algorithm : document.querySelector("#input-algorithm"),
                 start : document.querySelector("#input-start"),
-                clear : document.querySelector("#input-clear"),
                 error : document.querySelector("#Error"),
             },
 
@@ -547,7 +547,6 @@ class Controller{
             }
         });
 
-        this.DOM.Input.clear.addEventListener("click", () => this.clear())
     }
 
     _filter_input(inp){
@@ -604,10 +603,6 @@ class Controller{
         
     }
 
-    clear(){
-        this.View.reset_input()
-        this.View.reset_results()
-    }
 }
 
 $('#input-start').click(function () {
@@ -617,13 +612,68 @@ $('#input-start').click(function () {
     referencias = col2.split(' ');
     if(referencias.length >= 4){
         document.getElementById("main").style.display = "block";
+        document.getElementById("main3").style.display = "block";
     }
     document.querySelector('#name').value = document.querySelector("#input-algorithm").value.toUpperCase();
+
+
+	setTimeout(function () {
+
+		var Optimo = [];
+		var Optimo2 = ["FCFS", "SJF", "PRIORIDAD", "ROUND ROBIN"];
+		Optimo[0] = Number(document.getElementById('explanation-equation1_1').innerHTML);
+		Optimo[0] = parseFloat(Optimo[0].toPrecision(4));
+		Optimo[1] = Number(document.getElementById('explanation-equation2_1').innerHTML);
+		Optimo[1] = parseFloat(Optimo[1].toPrecision(4));
+		Optimo[2] = Number(document.getElementById('explanation-equation3_1').innerHTML);
+		Optimo[2] = parseFloat(Optimo[2].toPrecision(4));
+		Optimo[3] = Number(document.getElementById('explanation-equation4_1').innerHTML);
+		Optimo[3] = parseFloat(Optimo[3].toPrecision(4));
+			
+        console.log(Optimo);
+        console.log(Optimo2);
+
+		let dataLen = Optimo.length;
+		for(let i=0; i < dataLen; i++){
+			for(let j=0; j < dataLen; j++){
+				if(j+1 !== dataLen){
+				if(Optimo[j] > Optimo[j+1]){
+					let swapElement = Optimo[j+1];
+					Optimo[j+1] = Optimo[j];
+					Optimo[j] = swapElement;
+
+					let swapElement2 = Optimo2[j+1];
+					Optimo2[j+1] = Optimo2[j];
+					Optimo2[j] = swapElement2;
+				}
+				}  
+			}
+		}
+        console.log(Optimo);
+        console.log(Optimo2);
+		if(Optimo[0] == Optimo[1] && Optimo[1] == Optimo[2] && Optimo[2] == Optimo[3]){
+            document.querySelector('.collapsible-textinput1').value = Optimo2[0] + ', ' + Optimo2[1] + ', ' + Optimo2[2] + ' y ' + Optimo2[3];
+		}
+		else{
+			if(Optimo[0] == Optimo[1] && Optimo[1] == Optimo[2]){
+                document.querySelector('.collapsible-textinput1').value = Optimo2[0] + ', ' + Optimo2[1] + ' y ' + Optimo2[2];
+			}
+			else{
+				if(Optimo[0] == Optimo[1]){
+					document.querySelector('.collapsible-textinput1').value = Optimo2[0] + ' y ' + Optimo2[1];
+				}
+				else{
+					document.querySelector('.collapsible-textinput1').value = Optimo2[0];
+				}
+			}
+		}
+
+        document.querySelector('.collapsible-textinput').value = Number($("#proccess_num").val());
+        document.querySelector('.collapsible-textinput2').value = document.querySelector('#input-frames').value;
+        document.querySelector('.collapsible-textinput3').value = document.querySelector('#input-algorithm').value.toUpperCase();
+	}, 300);
 })
 
-$('#input-clear').click(function () {
-    document.getElementById("main").style.display = "none";
-})
 
 let controller = new Controller();
 

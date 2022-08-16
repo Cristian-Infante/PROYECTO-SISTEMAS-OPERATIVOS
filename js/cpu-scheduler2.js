@@ -389,7 +389,7 @@ $(document).ready(function () {
 			}
 		}
 		if(Optimo[0] == Optimo[1] && Optimo[1] == Optimo[2] && Optimo[2] == Optimo[3]){
-			document.getElementById('optimo').innerHTML = 'Todos los algoritmos de planificacion de procesos tienen la misma efectividad';
+			document.getElementById('optimo').innerHTML = 'Todos los algoritmos de planificacion de procesos0 tienen la misma efectividad';
 		}
 		else{
 			if(Optimo[0] == Optimo[1] && Optimo[1] == Optimo[2]){
@@ -583,17 +583,7 @@ $(document).ready(function () {
 
 	})
 	$('#RESET').click(function () {
-		for (var i = 0; i <= processCount; i++) {
-			$("#arrive_" + i).val("");
-			$("#burst_" + i).val("");
-			$("#priority_" + i).val("");
-		}
-		$('#enter_quantum').val(2);
-		$('#proccess_num').val(3);
-		processCount = 3;
-		R = 0;
-		run();
-		window.location.reload()
+		//window.location.reload()
 	})
 	$(window).resize(function () {
 		createRuler(bar.sum);
