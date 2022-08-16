@@ -1,5 +1,5 @@
 <?php
-
+  session_start();
   include_once("conexion_bd.php");
   if($_GET['alg_rp']){
     $_1 = $_GET['n_procesos'];
