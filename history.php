@@ -1,7 +1,7 @@
 <?php
     include_once("conexion_bd.php");
 
-    $query = "SELECT * FROM historial";
+    $query = "SELECT * FROM historial cod_simulacion DESC";
     $consulta = pg_query($conexion, $query);
     $cantidad = pg_numrows($consulta);    
 ?>
