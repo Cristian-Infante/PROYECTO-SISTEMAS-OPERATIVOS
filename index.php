@@ -8,7 +8,7 @@
     $_4 = $_GET['alg_rp'];
     $query = "INSERT INTO historial(n_procesos, b_pp, n_marcos, alg_rp) VALUES ('$_1', '$_2', '$_3', '$_4');";
     pg_query($query);
-    header('index.php');
+    header('location: index.php');
   }
 
 ?>
