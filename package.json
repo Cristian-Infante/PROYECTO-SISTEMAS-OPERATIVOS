@@ -1,7 +1,7 @@
 {
 3    "name": "PROYECTO-SISTEMAS-OPERATIVOS",
 4    "version": "1.0.0",
-5    "description": "",
+5    "description": " ",
 6    "scripts": {
 7        "build": "echo \"No build specified\" && exit 1",
 8        "test": "echo \"No test specified\" && exit 1",
